@@ -1,4 +1,8 @@
-# art — imagen → vectores para plotter
+# art — arte con plotter
+
+**➡ Sistema completo paso a paso por estilos: [plotter/README.md](plotter/README.md)**
+
+## DrawingBotV3: imagen → vectores para plotter
 
 Usa [DrawingBotV3](https://github.com/SonarSonic/DrawingBotV3) (versión Free, open source) **sin interfaz gráfica**
 para convertir una imagen en trazos lineales (SVG / G-code / PDF) listos para un pen plotter.
