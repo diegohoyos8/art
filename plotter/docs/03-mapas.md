@@ -28,3 +28,23 @@ Calles, ríos y costa desde OpenStreetMap, separados por importancia en capas (=
 - **Mapa de maratón / ruta**: exporta tu ruta GPX (Strava, Garmin) y ábrela en Inkscape encima del mapa como capa extra en color.
 - **Papel negro + gel blanco o metálico**: los mapas quedan espectaculares (como el vídeo del mapa morado).
 - **Sin agua o sin calles pequeñas**: borra la capa en Inkscape para un mapa más limpio.
+
+## Madrid sin OpenStreetMap: Callejero oficial del Ayuntamiento
+
+`estilos/mapa_madrid_callejero.py` dibuja Madrid con los datos oficiales del Ayuntamiento
+(cruces + direcciones con coordenadas). Así se hizo `ejemplos/madrid_A3.svg`.
+
+1. Descarga de **datos.madrid.es** el "Callejero oficial del Ayuntamiento de Madrid": los CSV de **cruces** y de **direcciones**.
+   (Copia de 2024 en el repo GitHub `iqueipopg/MadridGPS` → `data.zip`.)
+2. Genera:
+   ```bash
+   cd plotter/estilos
+   python mapa_madrid_callejero.py cruces.csv --direcciones direcciones.csv -o madrid.svg --papel A3
+   # otro centro / zoom:  --centro 40.4153,-3.6845 --radio 1500   (Retiro, más cerca)
+   # sin título:          --titulo ""
+   ```
+3. `plotter/preparar.sh madrid.svg a3 10mm`
+
+Capas: `1-principales` (avenidas, paseos, autovías → pluma 0.7–0.8), `2-calles` (0.3), `3-pequenas` (0.1–0.2),
+`4-marco`, `5` = título MADRID + coordenadas en fuente Hershey (un solo trazo).
+Para el A3 de ejemplo: ~29 m con tinta (casi todo en la capa 2, ten una pluma 0.3 de repuesto).
