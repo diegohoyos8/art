@@ -36,8 +36,9 @@ def lines_of(geom):
 
 def main():
     ap = argparse.ArgumentParser()
-    g = ap.add_mutually_exclusive_group(required=True)
-    g.add_argument("--lugar"); g.add_argument("--punto"); g.add_argument("--osm"); g.add_argument("--pbf", help="extracto .osm.pbf (p.ej. de download.geofabrik.de), sin internet")
+    g = ap.add_mutually_exclusive_group()
+    g.add_argument("--lugar"); g.add_argument("--osm"); g.add_argument("--pbf", help="extracto .osm.pbf (p.ej. de download.geofabrik.de), sin internet")
+    ap.add_argument("--punto", help="lat,lon del centro (con --pbf o sin nada más)")
     ap.add_argument("--radio", type=float, default=2000, help="metros")
     ap.add_argument("--papel", default="A3"); ap.add_argument("--horizontal", action="store_true")
     ap.add_argument("--circulo", action="store_true", help="recorte circular")
@@ -53,6 +54,8 @@ def main():
     else:
         if a.lugar:
             lat, lon = ox.geocode(a.lugar)
+        elif not a.punto:
+            ap.error("indica --lugar, --punto, --osm o --pbf")
         else:
             lat, lon = map(float, a.punto.split(","))
         G = ox.graph_from_point((lat, lon), dist=a.radio, network_type="all", retain_all=True)
@@ -86,11 +89,22 @@ def main():
 
 def from_pbf(a):
     import pyrosm
-    osm = pyrosm.OSM(a.pbf)
+    import geopandas as gpd
+    bbox = None
+    if a.punto:  # recorta al leer: rápido aunque el .pbf sea de toda una región
+        lat, lon = map(float, a.punto.split(","))
+        d = a.radio * 1.6 / 111000
+        bbox = [lon - d / np.cos(np.radians(lat)), lat - d, lon + d / np.cos(np.radians(lat)), lat + d]
+    osm = pyrosm.OSM(a.pbf, bounding_box=bbox)
     edges = osm.get_network(network_type="all")
+    if edges is None or edges.empty:
+        raise SystemExit("No hay calles en esa zona del .pbf: ¿el --punto está dentro del archivo?")
     crs = edges.estimate_utm_crs()
     edges = edges.to_crs(crs)
-    cx, cy = edges.union_all().centroid.coords[0]
+    if a.punto:
+        cx, cy = gpd.GeoSeries([Point(lon, lat)], crs=4326).to_crs(crs).iloc[0].coords[0]
+    else:
+        cx, cy = edges.union_all().centroid.coords[0]
     w, h = plotlib.paper(a.papel, a.horizontal)
     r = a.radio
     clip = Point(cx, cy).buffer(r) if a.circulo else box(cx - r * w / max(w, h), cy - r * h / max(w, h), cx + r * w / max(w, h), cy + r * h / max(w, h))

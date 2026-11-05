@@ -11,7 +11,8 @@ Calles, ríos y costa desde OpenStreetMap, separados por importancia en capas (=
    python mapa.py --lugar "Madrid, Spain" --radio 2500 --papel A3 -o madrid.svg
    python mapa.py --punto 40.4168,-3.7038 --radio 1500 --circulo -o sol.svg     # recorte circular
    ```
-   Sin internet: archivo `.osm` (openstreetmap.org → Exportar) con `--osm zona.osm`, o una región entera `.osm.pbf` de download.geofabrik.de con `--pbf region.osm.pbf --radio 2000`
+   Sin internet: región entera `.osm.pbf` de Geofabrik (ver abajo):
+   `python mapa.py --pbf madrid-latest.osm.pbf --punto 40.4168,-3.7038 --radio 2500 --papel A3 -o madrid.svg`
 3. **Capas que salen**:
    | Capa | Contenido | Pluma sugerida |
    |---|---|---|
@@ -22,6 +23,16 @@ Calles, ríos y costa desde OpenStreetMap, separados por importancia en capas (=
    | `marco` | borde del recorte | la más gruesa |
 4. **Prepara**: `plotter/preparar.sh madrid.svg a3 20mm`
 5. **Texto** (nombre de la ciudad, coordenadas): añádelo en Inkscape con *Hershey Text* en una capa nueva.
+
+## Dónde descargar mapas con más detalle
+
+| Fuente | Qué da | Uso |
+|---|---|---|
+| **download.geofabrik.de** | Regiones completas de OpenStreetMap (`.osm.pbf`), al día | `mapa.py --pbf archivo --punto lat,lon` |
+| **extract.bbbike.org** | Recorte a medida de cualquier ciudad (elige formato PBF) | igual que Geofabrik |
+| **overpass-turbo.eu** | Capas concretas (edificios, ríos, metro…) en GeoJSON | ábrelas en Inkscape como capa extra |
+| **centrodedescargas.cnig.es** | IGN España: curvas de nivel, modelos de terreno, CartoCiudad | mapas topográficos de líneas |
+| **datos.madrid.es** | Callejero oficial de Madrid | `mapa_madrid_callejero.py` |
 
 ## Ideas
 
