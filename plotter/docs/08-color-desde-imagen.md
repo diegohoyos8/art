@@ -8,7 +8,12 @@ y genera una capa por pluma (tramas a distintos ángulos que se mezclan ópticam
 
 ## 1. Tu catálogo de plumas: `plotter/plumas.json`
 
-Lista de las plumas que **tienes de verdad**: nombre, color (hex) y grosor. Los colores que trae son aproximados.
+Catálogo de **123 plumas** (Micron, Staedtler, Stabilo, Uni, Copic, Pitt, Signo, Gelly Roll, G2, EnerGel, Posca,
+Sharpie, pinceles y estilográficas). Cada una tiene `"tengo": true/false`: dime cuáles compras y las marco.
+- Las **opacas** (blanco, metálicos, Posca) no entran en la mezcla automática: cubren en vez de mezclarse.
+- Los **pinceles** quedan fuera del tramado por defecto (trazo variable); `--tipos` lo cambia.
+- Plumas del **mismo color** (Micron negro, Uni Pin negro…) se tratan como una: el informe te dice cuáles son equivalentes.
+Los colores que trae son aproximados.
 **Para máxima fidelidad**: traza un cuadrado relleno con cada pluma, fotografíalo con luz de día, mide el color
 (cualquier app de cuentagotas) y ponlo en el catálogo. También el color del **papel** (`"papel"`).
 
@@ -25,6 +30,7 @@ python plotter/estilos/colores.py foto.jpg --color-papel "#ece3d0" --solo-elegir
 ```
 **ΔE** = diferencia de color media con el original (< 5 muy fiel · 5–10 bien · > 15 se aleja).
 Fíjate en cuánto mejora cada pluma extra: si mejora < 1, no merece el trabajo de otra capa.
+Las que no tienes salen marcadas "(no la tienes)": compara con `--solo-mias` para saber si vale la pena comprar.
 
 ## 3. Generar
 
@@ -36,7 +42,10 @@ plotter/preparar.sh obra.svg a3 0.3,0.3,0.3          # grosores en el orden que 
 | Opción | Efecto |
 |---|---|
 | `--plumas N` | número de plumas |
-| `--usar "Micron negro"` | obliga a incluir esa pluma (repetible) |
+| `--usar "Micron negro 0.3"` | obliga a incluir esa pluma (repetible) |
+| `--solo-mias` | elige solo entre las plumas que tienes (`"tengo": true`) |
+| `--grosor 0.3` | grosor preferido cuando una pluma existe en varios |
+| `--tipos fineliner,gel,...` | tipos de pluma candidatos |
 | `--color-papel #hex` | color del papel (crema, kraft, gris…): **cambia mucho la fidelidad** |
 | `--contornos 1-5` | añade contornos con la pluma más oscura: devuelve el detalle (ideal en ilustraciones) |
 | `--cobertura-max 0.45` / `--tinta-total 0.55` | límites de tinta por capa y total (los valida `preparar.sh`) |

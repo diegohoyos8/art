@@ -90,7 +90,7 @@ def delta_e(a_lin, b_lin):
 
 def evaluate(idx, pens, target, paper, cmax, ucap):
     A = np.array([1 - np.clip(to_lin(hex2rgb(pens[i]["color"])) / paper, 0, 1) for i in idx])
-    c = solve(target, A, paper, cmax, ucap, iters=150)
+    c = solve(target, A, paper, cmax, ucap, iters=100)
     return delta_e(simulate(c, A, paper), target), c, A
 
 
@@ -134,13 +134,48 @@ def main():
     ap.add_argument("--color-papel", help="color del papel, p.ej. #ece3d0 (crema). Por defecto el del catálogo")
     ap.add_argument("--sin-compresion", action="store_true", help="no comprimir tonos (oscuros se aplanan)")
     ap.add_argument("--contornos", type=int, default=0, help="añade contornos (line art) con la pluma más oscura; 1-5 = detalle")
+    ap.add_argument("--solo-mias", action="store_true", help="elegir solo entre las plumas con \"tengo\": true")
+    ap.add_argument("--tipos", default="fineliner,gel,estilografica,marcador",
+                    help="tipos de pluma candidatos (los pinceles quedan fuera: trazo variable)")
+    ap.add_argument("--grosor", type=float, default=0.3, help="grosor preferido cuando una pluma existe en varios")
     ap.add_argument("--solo-elegir", action="store_true")
     ap.add_argument("--margen", type=float, default=15)
     a = ap.parse_args()
 
     cat = json.load(open(a.catalogo))
-    pens, paper = cat["plumas"], to_lin(hex2rgb(a.color_papel or cat.get("papel", "#ffffff")))
+    paper = to_lin(hex2rgb(a.color_papel or cat.get("papel", "#ffffff")))
+    tipos = set(a.tipos.split(","))
+    pens = [p for p in cat["plumas"] if not p.get("opaco")        # tintas opacas no se mezclan así
+            and (p.get("tipo", "fineliner") in tipos or p["nombre"] in a.usar)]
+    if a.solo_mias:
+        pens = [p for p in pens if p.get("tengo")]
+        if not pens:
+            raise SystemExit("No hay plumas marcadas con \"tengo\": true en el catálogo")
+    # un candidato por color (el grosor más cercano al pedido): evita probar 6 negros iguales
+    best_by_color = {}
+    for p in pens:
+        q = best_by_color.get(p["color"])
+        if (p["nombre"] in a.usar or q is None or
+                (q["nombre"] not in a.usar and abs(p["grosor"] - a.grosor) < abs(q["grosor"] - a.grosor))):
+            best_by_color[p["color"]] = p
+    pens = list(best_by_color.values())
+    # fusiona colores casi idénticos (ΔE < 6): un solo "negro", un solo "azul marino"...
+    def pref(p):   # preferencia como representante: obligada > la tienes > grosor cercano
+        return (p["nombre"] not in a.usar, not p.get("tengo"), abs(p["grosor"] - a.grosor), p["nombre"])
+    allp = sorted(cat["plumas"], key=pref)
+    pens.sort(key=pref)
+    lab = lambda p: rgb2lab(hex2rgb(p["color"]).reshape(1, 1, 3))[0, 0]
+    labs = [lab(p) for p in pens]
+    keep = []
+    for i, p in enumerate(pens):
+        if all(np.linalg.norm(labs[i] - labs[j]) >= 6 for j in keep):
+            keep.append(i)
+    pens = [pens[i] for i in keep]
+    equiv = {p["nombre"]: [q["nombre"] + (" ✓" if q.get("tengo") else "") for q in allp
+                           if q["nombre"] != p["nombre"] and not q.get("opaco")
+                           and np.linalg.norm(lab(q) - lab(p)) < 6] for p in pens}
     names = [p["nombre"] for p in pens]
+    print(f"Candidatas: {len(pens)} plumas ({'solo las tuyas' if a.solo_mias else 'todo el catálogo'})")
     forced = [names.index(n) for n in a.usar]
 
     img = cv2.cvtColor(cv2.imread(a.imagen), cv2.COLOR_BGR2RGB).astype(float) / 255
@@ -153,7 +188,12 @@ def main():
         sel, de = choose(pens, target, paper, k, forced, a.cobertura_max, a.tinta_total)
         results[k] = sel
         mark = "  ← elegido" if k == a.plumas else ""
-        print(f"  {k} plumas: ΔE {de:5.1f}  {' + '.join(names[i] for i in sel)}{mark}")
+        print(f"  {k} plumas: ΔE {de:5.1f}  {' + '.join(names[i] + ('' if pens[i].get('tengo') else ' (no la tienes)') for i in sel)}{mark}")
+    chosen = results[a.plumas]
+    print(f"Plumas equivalentes (mismo color, puedes usar cualquiera; ✓ = la tienes):")
+    for i in chosen:
+        eq = equiv[names[i]]
+        print(f"  {names[i]}: " + (", ".join(eq[:6]) + (" …" if len(eq) > 6 else "") if eq else "—"))
     if a.solo_elegir:
         return
 

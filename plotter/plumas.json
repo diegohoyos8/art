@@ -1,24 +1,1034 @@
 {
-  "_nota": "Catálogo de TUS plumas. Edita/añade las que tengas. 'color' es un hex aproximado del trazo sobre papel blanco: para más fidelidad, haz una muestra en papel, fotografíala con luz neutra y pon aquí el color medido. 'grosor' en mm.",
-  "papel": "#ffffff",
-  "plumas": [
-    {"nombre": "Micron negro", "color": "#1a1a1a", "grosor": 0.3},
-    {"nombre": "Micron sepia", "color": "#5b4033", "grosor": 0.3},
-    {"nombre": "Micron marron", "color": "#7a4a2a", "grosor": 0.3},
-    {"nombre": "Micron rojo", "color": "#c8102e", "grosor": 0.3},
-    {"nombre": "Micron rosa", "color": "#e8618c", "grosor": 0.3},
-    {"nombre": "Micron naranja", "color": "#f07f1e", "grosor": 0.3},
-    {"nombre": "Micron amarillo", "color": "#f2c200", "grosor": 0.3},
-    {"nombre": "Micron verde", "color": "#1f7a3a", "grosor": 0.3},
-    {"nombre": "Micron verde claro", "color": "#7cbf3f", "grosor": 0.3},
-    {"nombre": "Micron azul", "color": "#1f4fa3", "grosor": 0.3},
-    {"nombre": "Micron azul real", "color": "#2b6cd6", "grosor": 0.3},
-    {"nombre": "Micron azul claro", "color": "#36a9e1", "grosor": 0.3},
-    {"nombre": "Micron morado", "color": "#5b2c83", "grosor": 0.3},
-    {"nombre": "Micron burdeos", "color": "#7b1e34", "grosor": 0.3},
-    {"nombre": "Micron gris frio", "color": "#8a9199", "grosor": 0.3},
-    {"nombre": "Staedtler ocre", "color": "#c8902f", "grosor": 0.3},
-    {"nombre": "Staedtler cian", "color": "#00a0d6", "grosor": 0.3},
-    {"nombre": "Staedtler magenta", "color": "#d1006f", "grosor": 0.3}
-  ]
+ "_nota": "Catálogo de plumas. 'tengo': true = la tienes (márcalas según las compres). 'color' es un hex aproximado del trazo: para más fidelidad mide tu muestra. 'opaco': tinta que cubre (blanco, metálicos, Posca): no entra en la mezcla automática de colores. 'grosor' en mm.",
+ "papel": "#ffffff",
+ "plumas": [
+  {
+   "nombre": "Micron negro 0.2",
+   "marca": "Sakura",
+   "tipo": "fineliner",
+   "color": "#1a1a1a",
+   "grosor": 0.2,
+   "tengo": false
+  },
+  {
+   "nombre": "Micron negro 0.25",
+   "marca": "Sakura",
+   "tipo": "fineliner",
+   "color": "#1a1a1a",
+   "grosor": 0.25,
+   "tengo": false
+  },
+  {
+   "nombre": "Micron negro 0.3",
+   "marca": "Sakura",
+   "tipo": "fineliner",
+   "color": "#1a1a1a",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Micron negro 0.35",
+   "marca": "Sakura",
+   "tipo": "fineliner",
+   "color": "#1a1a1a",
+   "grosor": 0.35,
+   "tengo": false
+  },
+  {
+   "nombre": "Micron negro 0.45",
+   "marca": "Sakura",
+   "tipo": "fineliner",
+   "color": "#1a1a1a",
+   "grosor": 0.45,
+   "tengo": false
+  },
+  {
+   "nombre": "Micron negro 0.5",
+   "marca": "Sakura",
+   "tipo": "fineliner",
+   "color": "#1a1a1a",
+   "grosor": 0.5,
+   "tengo": false
+  },
+  {
+   "nombre": "Micron sepia",
+   "marca": "Sakura",
+   "tipo": "fineliner",
+   "color": "#5b4033",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Micron marron",
+   "marca": "Sakura",
+   "tipo": "fineliner",
+   "color": "#7a4a2a",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Micron rojo",
+   "marca": "Sakura",
+   "tipo": "fineliner",
+   "color": "#c8102e",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Micron rosa",
+   "marca": "Sakura",
+   "tipo": "fineliner",
+   "color": "#e8618c",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Micron naranja",
+   "marca": "Sakura",
+   "tipo": "fineliner",
+   "color": "#f07f1e",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Micron amarillo",
+   "marca": "Sakura",
+   "tipo": "fineliner",
+   "color": "#f2c200",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Micron verde",
+   "marca": "Sakura",
+   "tipo": "fineliner",
+   "color": "#1f7a3a",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Micron verde claro",
+   "marca": "Sakura",
+   "tipo": "fineliner",
+   "color": "#7cbf3f",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Micron azul",
+   "marca": "Sakura",
+   "tipo": "fineliner",
+   "color": "#1f4fa3",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Micron azul real",
+   "marca": "Sakura",
+   "tipo": "fineliner",
+   "color": "#2b6cd6",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Micron azul claro",
+   "marca": "Sakura",
+   "tipo": "fineliner",
+   "color": "#36a9e1",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Micron morado",
+   "marca": "Sakura",
+   "tipo": "fineliner",
+   "color": "#5b2c83",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Micron burdeos",
+   "marca": "Sakura",
+   "tipo": "fineliner",
+   "color": "#7b1e34",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Micron gris frio",
+   "marca": "Sakura",
+   "tipo": "fineliner",
+   "color": "#8a9199",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Micron gris calido",
+   "marca": "Sakura",
+   "tipo": "fineliner",
+   "color": "#9a8f85",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Micron azul negro",
+   "marca": "Sakura",
+   "tipo": "fineliner",
+   "color": "#1c2a44",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Staedtler pigment liner negro 0.05",
+   "marca": "Staedtler",
+   "tipo": "fineliner",
+   "color": "#161616",
+   "grosor": 0.05,
+   "tengo": false
+  },
+  {
+   "nombre": "Staedtler pigment liner negro 0.1",
+   "marca": "Staedtler",
+   "tipo": "fineliner",
+   "color": "#161616",
+   "grosor": 0.1,
+   "tengo": false
+  },
+  {
+   "nombre": "Staedtler pigment liner negro 0.3",
+   "marca": "Staedtler",
+   "tipo": "fineliner",
+   "color": "#161616",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Staedtler pigment liner negro 0.5",
+   "marca": "Staedtler",
+   "tipo": "fineliner",
+   "color": "#161616",
+   "grosor": 0.5,
+   "tengo": false
+  },
+  {
+   "nombre": "Staedtler pigment liner negro 0.7",
+   "marca": "Staedtler",
+   "tipo": "fineliner",
+   "color": "#161616",
+   "grosor": 0.7,
+   "tengo": false
+  },
+  {
+   "nombre": "Staedtler pigment liner negro 1.2",
+   "marca": "Staedtler",
+   "tipo": "fineliner",
+   "color": "#161616",
+   "grosor": 1.2,
+   "tengo": false
+  },
+  {
+   "nombre": "Staedtler triplus negro",
+   "marca": "Staedtler",
+   "tipo": "fineliner",
+   "color": "#1b1b1b",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Staedtler triplus azul",
+   "marca": "Staedtler",
+   "tipo": "fineliner",
+   "color": "#1d4f9c",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Staedtler triplus azul oscuro",
+   "marca": "Staedtler",
+   "tipo": "fineliner",
+   "color": "#1c2f6b",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Staedtler triplus azul claro",
+   "marca": "Staedtler",
+   "tipo": "fineliner",
+   "color": "#3fa3dc",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Staedtler triplus cian",
+   "marca": "Staedtler",
+   "tipo": "fineliner",
+   "color": "#00a0d6",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Staedtler triplus turquesa",
+   "marca": "Staedtler",
+   "tipo": "fineliner",
+   "color": "#00a39a",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Staedtler triplus verde",
+   "marca": "Staedtler",
+   "tipo": "fineliner",
+   "color": "#14894a",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Staedtler triplus verde claro",
+   "marca": "Staedtler",
+   "tipo": "fineliner",
+   "color": "#8cc63f",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Staedtler triplus verde oliva",
+   "marca": "Staedtler",
+   "tipo": "fineliner",
+   "color": "#6b7a2a",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Staedtler triplus amarillo",
+   "marca": "Staedtler",
+   "tipo": "fineliner",
+   "color": "#ffd200",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Staedtler triplus ocre",
+   "marca": "Staedtler",
+   "tipo": "fineliner",
+   "color": "#c8902f",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Staedtler triplus naranja",
+   "marca": "Staedtler",
+   "tipo": "fineliner",
+   "color": "#f2742b",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Staedtler triplus rojo",
+   "marca": "Staedtler",
+   "tipo": "fineliner",
+   "color": "#d7262e",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Staedtler triplus carmin",
+   "marca": "Staedtler",
+   "tipo": "fineliner",
+   "color": "#a8172f",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Staedtler triplus magenta",
+   "marca": "Staedtler",
+   "tipo": "fineliner",
+   "color": "#d1006f",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Staedtler triplus rosa",
+   "marca": "Staedtler",
+   "tipo": "fineliner",
+   "color": "#f06ea9",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Staedtler triplus violeta",
+   "marca": "Staedtler",
+   "tipo": "fineliner",
+   "color": "#6a3d9a",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Staedtler triplus lila",
+   "marca": "Staedtler",
+   "tipo": "fineliner",
+   "color": "#9b7cc0",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Staedtler triplus marron",
+   "marca": "Staedtler",
+   "tipo": "fineliner",
+   "color": "#7b4b2a",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Staedtler triplus gris",
+   "marca": "Staedtler",
+   "tipo": "fineliner",
+   "color": "#8c8c8c",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Stabilo Point 88 negro",
+   "marca": "Stabilo",
+   "tipo": "fineliner",
+   "color": "#1c1c1c",
+   "grosor": 0.4,
+   "tengo": false
+  },
+  {
+   "nombre": "Stabilo Point 88 azul",
+   "marca": "Stabilo",
+   "tipo": "fineliner",
+   "color": "#1e5aa8",
+   "grosor": 0.4,
+   "tengo": false
+  },
+  {
+   "nombre": "Stabilo Point 88 azul cielo",
+   "marca": "Stabilo",
+   "tipo": "fineliner",
+   "color": "#4fb3e8",
+   "grosor": 0.4,
+   "tengo": false
+  },
+  {
+   "nombre": "Stabilo Point 88 turquesa",
+   "marca": "Stabilo",
+   "tipo": "fineliner",
+   "color": "#00a7a0",
+   "grosor": 0.4,
+   "tengo": false
+  },
+  {
+   "nombre": "Stabilo Point 88 verde",
+   "marca": "Stabilo",
+   "tipo": "fineliner",
+   "color": "#1a8f3c",
+   "grosor": 0.4,
+   "tengo": false
+  },
+  {
+   "nombre": "Stabilo Point 88 verde lima",
+   "marca": "Stabilo",
+   "tipo": "fineliner",
+   "color": "#a2c93a",
+   "grosor": 0.4,
+   "tengo": false
+  },
+  {
+   "nombre": "Stabilo Point 88 amarillo",
+   "marca": "Stabilo",
+   "tipo": "fineliner",
+   "color": "#ffd400",
+   "grosor": 0.4,
+   "tengo": false
+  },
+  {
+   "nombre": "Stabilo Point 88 naranja",
+   "marca": "Stabilo",
+   "tipo": "fineliner",
+   "color": "#f47a20",
+   "grosor": 0.4,
+   "tengo": false
+  },
+  {
+   "nombre": "Stabilo Point 88 rojo",
+   "marca": "Stabilo",
+   "tipo": "fineliner",
+   "color": "#d92b2b",
+   "grosor": 0.4,
+   "tengo": false
+  },
+  {
+   "nombre": "Stabilo Point 88 rosa",
+   "marca": "Stabilo",
+   "tipo": "fineliner",
+   "color": "#ef6fa6",
+   "grosor": 0.4,
+   "tengo": false
+  },
+  {
+   "nombre": "Stabilo Point 88 violeta",
+   "marca": "Stabilo",
+   "tipo": "fineliner",
+   "color": "#6f3c97",
+   "grosor": 0.4,
+   "tengo": false
+  },
+  {
+   "nombre": "Stabilo Point 88 marron",
+   "marca": "Stabilo",
+   "tipo": "fineliner",
+   "color": "#7a4b2b",
+   "grosor": 0.4,
+   "tengo": false
+  },
+  {
+   "nombre": "Stabilo Point 88 gris",
+   "marca": "Stabilo",
+   "tipo": "fineliner",
+   "color": "#8f8f8f",
+   "grosor": 0.4,
+   "tengo": false
+  },
+  {
+   "nombre": "Stabilo Point 88 ocre",
+   "marca": "Stabilo",
+   "tipo": "fineliner",
+   "color": "#c99a3b",
+   "grosor": 0.4,
+   "tengo": false
+  },
+  {
+   "nombre": "Uni Pin negro 0.1",
+   "marca": "Uni",
+   "tipo": "fineliner",
+   "color": "#181818",
+   "grosor": 0.1,
+   "tengo": false
+  },
+  {
+   "nombre": "Uni Pin negro 0.3",
+   "marca": "Uni",
+   "tipo": "fineliner",
+   "color": "#181818",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Uni Pin negro 0.5",
+   "marca": "Uni",
+   "tipo": "fineliner",
+   "color": "#181818",
+   "grosor": 0.5,
+   "tengo": false
+  },
+  {
+   "nombre": "Uni Pin negro 0.8",
+   "marca": "Uni",
+   "tipo": "fineliner",
+   "color": "#181818",
+   "grosor": 0.8,
+   "tengo": false
+  },
+  {
+   "nombre": "Copic Multiliner negro",
+   "marca": "Copic",
+   "tipo": "fineliner",
+   "color": "#171717",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Copic Multiliner sepia",
+   "marca": "Copic",
+   "tipo": "fineliner",
+   "color": "#5a3e2e",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Copic Multiliner gris frio",
+   "marca": "Copic",
+   "tipo": "fineliner",
+   "color": "#7f8790",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Copic Multiliner cobalto",
+   "marca": "Copic",
+   "tipo": "fineliner",
+   "color": "#24499c",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Pitt Artist Pen S negro",
+   "marca": "Faber-Castell",
+   "tipo": "fineliner",
+   "color": "#151515",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Pitt Artist Pen S sanguina",
+   "marca": "Faber-Castell",
+   "tipo": "fineliner",
+   "color": "#9a3b2e",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Pitt Artist Pen S sepia oscuro",
+   "marca": "Faber-Castell",
+   "tipo": "fineliner",
+   "color": "#4e3528",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Pitt Artist Pen S ocre dorado",
+   "marca": "Faber-Castell",
+   "tipo": "fineliner",
+   "color": "#c48a2c",
+   "grosor": 0.3,
+   "tengo": false
+  },
+  {
+   "nombre": "Signo UM-151 negro",
+   "marca": "Uni",
+   "tipo": "gel",
+   "color": "#1d1d1d",
+   "grosor": 0.38,
+   "tengo": false
+  },
+  {
+   "nombre": "Signo UM-151 azul",
+   "marca": "Uni",
+   "tipo": "gel",
+   "color": "#244fa6",
+   "grosor": 0.38,
+   "tengo": false
+  },
+  {
+   "nombre": "Signo UM-151 azul negro",
+   "marca": "Uni",
+   "tipo": "gel",
+   "color": "#22304a",
+   "grosor": 0.38,
+   "tengo": false
+  },
+  {
+   "nombre": "Signo UM-151 rojo",
+   "marca": "Uni",
+   "tipo": "gel",
+   "color": "#d1252c",
+   "grosor": 0.38,
+   "tengo": false
+  },
+  {
+   "nombre": "Signo UM-151 verde",
+   "marca": "Uni",
+   "tipo": "gel",
+   "color": "#178a4a",
+   "grosor": 0.38,
+   "tengo": false
+  },
+  {
+   "nombre": "Signo UM-151 morado",
+   "marca": "Uni",
+   "tipo": "gel",
+   "color": "#5d3591",
+   "grosor": 0.38,
+   "tengo": false
+  },
+  {
+   "nombre": "Signo UM-151 burdeos",
+   "marca": "Uni",
+   "tipo": "gel",
+   "color": "#7d2236",
+   "grosor": 0.38,
+   "tengo": false
+  },
+  {
+   "nombre": "Signo UM-151 marron",
+   "marca": "Uni",
+   "tipo": "gel",
+   "color": "#7a4c2e",
+   "grosor": 0.38,
+   "tengo": false
+  },
+  {
+   "nombre": "Signo UM-153 blanco",
+   "marca": "Uni",
+   "tipo": "gel",
+   "color": "#ffffff",
+   "grosor": 0.8,
+   "tengo": false,
+   "opaco": true,
+   "nota": "opaco: para papel oscuro"
+  },
+  {
+   "nombre": "Gelly Roll blanco 0.5",
+   "marca": "Sakura",
+   "tipo": "gel",
+   "color": "#ffffff",
+   "grosor": 0.5,
+   "tengo": false,
+   "opaco": true,
+   "nota": "opaco: para papel oscuro"
+  },
+  {
+   "nombre": "Gelly Roll blanco 0.8",
+   "marca": "Sakura",
+   "tipo": "gel",
+   "color": "#ffffff",
+   "grosor": 0.8,
+   "tengo": false,
+   "opaco": true,
+   "nota": "opaco: para papel oscuro"
+  },
+  {
+   "nombre": "Gelly Roll blanco 1.0",
+   "marca": "Sakura",
+   "tipo": "gel",
+   "color": "#ffffff",
+   "grosor": 1.0,
+   "tengo": false,
+   "opaco": true,
+   "nota": "opaco: para papel oscuro"
+  },
+  {
+   "nombre": "Gelly Roll Metallic oro",
+   "marca": "Sakura",
+   "tipo": "gel",
+   "color": "#c9a24a",
+   "grosor": 0.5,
+   "tengo": false,
+   "opaco": true,
+   "nota": "metálico: luce en papel negro"
+  },
+  {
+   "nombre": "Gelly Roll Metallic plata",
+   "marca": "Sakura",
+   "tipo": "gel",
+   "color": "#b9bcc0",
+   "grosor": 0.5,
+   "tengo": false,
+   "opaco": true,
+   "nota": "metálico: luce en papel negro"
+  },
+  {
+   "nombre": "Gelly Roll Metallic cobre",
+   "marca": "Sakura",
+   "tipo": "gel",
+   "color": "#b8734a",
+   "grosor": 0.5,
+   "tengo": false,
+   "opaco": true,
+   "nota": "metálico: luce en papel negro"
+  },
+  {
+   "nombre": "G2 negro 0.5",
+   "marca": "Pilot",
+   "tipo": "gel",
+   "color": "#1c1c1c",
+   "grosor": 0.5,
+   "tengo": false
+  },
+  {
+   "nombre": "G2 azul 0.5",
+   "marca": "Pilot",
+   "tipo": "gel",
+   "color": "#233f94",
+   "grosor": 0.5,
+   "tengo": false
+  },
+  {
+   "nombre": "G2 rojo 0.5",
+   "marca": "Pilot",
+   "tipo": "gel",
+   "color": "#cf2330",
+   "grosor": 0.5,
+   "tengo": false
+  },
+  {
+   "nombre": "G2 verde 0.5",
+   "marca": "Pilot",
+   "tipo": "gel",
+   "color": "#16824a",
+   "grosor": 0.5,
+   "tengo": false
+  },
+  {
+   "nombre": "G2 negro 0.7",
+   "marca": "Pilot",
+   "tipo": "gel",
+   "color": "#1c1c1c",
+   "grosor": 0.7,
+   "tengo": false
+  },
+  {
+   "nombre": "G2 azul 0.7",
+   "marca": "Pilot",
+   "tipo": "gel",
+   "color": "#233f94",
+   "grosor": 0.7,
+   "tengo": false
+  },
+  {
+   "nombre": "G2 rojo 0.7",
+   "marca": "Pilot",
+   "tipo": "gel",
+   "color": "#cf2330",
+   "grosor": 0.7,
+   "tengo": false
+  },
+  {
+   "nombre": "G2 verde 0.7",
+   "marca": "Pilot",
+   "tipo": "gel",
+   "color": "#16824a",
+   "grosor": 0.7,
+   "tengo": false
+  },
+  {
+   "nombre": "EnerGel negro",
+   "marca": "Pentel",
+   "tipo": "gel",
+   "color": "#1b1b1b",
+   "grosor": 0.5,
+   "tengo": false
+  },
+  {
+   "nombre": "EnerGel azul",
+   "marca": "Pentel",
+   "tipo": "gel",
+   "color": "#1f4aa8",
+   "grosor": 0.5,
+   "tengo": false
+  },
+  {
+   "nombre": "EnerGel violeta",
+   "marca": "Pentel",
+   "tipo": "gel",
+   "color": "#5b3594",
+   "grosor": 0.5,
+   "tengo": false
+  },
+  {
+   "nombre": "EnerGel turquesa",
+   "marca": "Pentel",
+   "tipo": "gel",
+   "color": "#0098a8",
+   "grosor": 0.5,
+   "tengo": false
+  },
+  {
+   "nombre": "Posca PC-1M negro",
+   "marca": "Uni",
+   "tipo": "marcador",
+   "color": "#1a1a1a",
+   "grosor": 0.7,
+   "tengo": false,
+   "opaco": true,
+   "nota": "pintura opaca, cubre sobre cualquier papel"
+  },
+  {
+   "nombre": "Posca PC-1M blanco",
+   "marca": "Uni",
+   "tipo": "marcador",
+   "color": "#ffffff",
+   "grosor": 0.7,
+   "tengo": false,
+   "opaco": true,
+   "nota": "pintura opaca, cubre sobre cualquier papel"
+  },
+  {
+   "nombre": "Posca PC-1M rojo",
+   "marca": "Uni",
+   "tipo": "marcador",
+   "color": "#d8262f",
+   "grosor": 0.7,
+   "tengo": false,
+   "opaco": true,
+   "nota": "pintura opaca, cubre sobre cualquier papel"
+  },
+  {
+   "nombre": "Posca PC-1M azul",
+   "marca": "Uni",
+   "tipo": "marcador",
+   "color": "#1f56b0",
+   "grosor": 0.7,
+   "tengo": false,
+   "opaco": true,
+   "nota": "pintura opaca, cubre sobre cualquier papel"
+  },
+  {
+   "nombre": "Posca PC-1M amarillo",
+   "marca": "Uni",
+   "tipo": "marcador",
+   "color": "#ffd800",
+   "grosor": 0.7,
+   "tengo": false,
+   "opaco": true,
+   "nota": "pintura opaca, cubre sobre cualquier papel"
+  },
+  {
+   "nombre": "Posca PC-1M verde",
+   "marca": "Uni",
+   "tipo": "marcador",
+   "color": "#1a9a49",
+   "grosor": 0.7,
+   "tengo": false,
+   "opaco": true,
+   "nota": "pintura opaca, cubre sobre cualquier papel"
+  },
+  {
+   "nombre": "Posca PC-1M oro",
+   "marca": "Uni",
+   "tipo": "marcador",
+   "color": "#c9a24a",
+   "grosor": 0.7,
+   "tengo": false,
+   "opaco": true,
+   "nota": "pintura opaca, cubre sobre cualquier papel"
+  },
+  {
+   "nombre": "Posca PC-1M plata",
+   "marca": "Uni",
+   "tipo": "marcador",
+   "color": "#bfc2c6",
+   "grosor": 0.7,
+   "tengo": false,
+   "opaco": true,
+   "nota": "pintura opaca, cubre sobre cualquier papel"
+  },
+  {
+   "nombre": "Sharpie Ultra Fine negro",
+   "marca": "Sharpie",
+   "tipo": "marcador",
+   "color": "#1a1a1a",
+   "grosor": 0.5,
+   "tengo": false,
+   "nota": "puede traspasar papel fino"
+  },
+  {
+   "nombre": "Sharpie Ultra Fine azul",
+   "marca": "Sharpie",
+   "tipo": "marcador",
+   "color": "#1f4fa8",
+   "grosor": 0.5,
+   "tengo": false,
+   "nota": "puede traspasar papel fino"
+  },
+  {
+   "nombre": "Sharpie Ultra Fine rojo",
+   "marca": "Sharpie",
+   "tipo": "marcador",
+   "color": "#d22a2e",
+   "grosor": 0.5,
+   "tengo": false,
+   "nota": "puede traspasar papel fino"
+  },
+  {
+   "nombre": "Sharpie Fine negro",
+   "marca": "Sharpie",
+   "tipo": "marcador",
+   "color": "#1a1a1a",
+   "grosor": 1.0,
+   "tengo": false,
+   "nota": "trazo grueso; puede traspasar"
+  },
+  {
+   "nombre": "Pentel Brush Pen negro",
+   "marca": "Pentel",
+   "tipo": "pincel",
+   "color": "#141414",
+   "grosor": 1.0,
+   "tengo": false,
+   "nota": "trazo variable; grosor aproximado"
+  },
+  {
+   "nombre": "Tombow Fudenosuke negro",
+   "marca": "Tombow",
+   "tipo": "pincel",
+   "color": "#151515",
+   "grosor": 0.8,
+   "tengo": false,
+   "nota": "punta pincel fina"
+  },
+  {
+   "nombre": "Pitt Artist Pen B negro",
+   "marca": "Faber-Castell",
+   "tipo": "pincel",
+   "color": "#151515",
+   "grosor": 1.5,
+   "tengo": false,
+   "nota": "punta pincel"
+  },
+  {
+   "nombre": "Pitt Artist Pen B sanguina",
+   "marca": "Faber-Castell",
+   "tipo": "pincel",
+   "color": "#9a3b2e",
+   "grosor": 1.5,
+   "tengo": false,
+   "nota": "punta pincel"
+  },
+  {
+   "nombre": "Pitt Artist Pen B azul ftalo",
+   "marca": "Faber-Castell",
+   "tipo": "pincel",
+   "color": "#1f3f8f",
+   "grosor": 1.5,
+   "tengo": false,
+   "nota": "punta pincel"
+  },
+  {
+   "nombre": "Lamy Safari F tinta negra",
+   "marca": "Lamy",
+   "tipo": "estilografica",
+   "color": "#202020",
+   "grosor": 0.5,
+   "tengo": false,
+   "nota": "usar tinta de calidad; plotear lento"
+  },
+  {
+   "nombre": "Lamy Safari F tinta azul",
+   "marca": "Lamy",
+   "tipo": "estilografica",
+   "color": "#2a4fa0",
+   "grosor": 0.5,
+   "tengo": false,
+   "nota": "usar tinta de calidad; plotear lento"
+  },
+  {
+   "nombre": "Platinum Preppy negro",
+   "marca": "Platinum",
+   "tipo": "estilografica",
+   "color": "#1e1e1e",
+   "grosor": 0.3,
+   "tengo": false,
+   "nota": "barata y fiable para plotter"
+  },
+  {
+   "nombre": "Platinum Preppy azul",
+   "marca": "Platinum",
+   "tipo": "estilografica",
+   "color": "#2b52a6",
+   "grosor": 0.3,
+   "tengo": false,
+   "nota": "barata y fiable para plotter"
+  },
+  {
+   "nombre": "Platinum Preppy rojo",
+   "marca": "Platinum",
+   "tipo": "estilografica",
+   "color": "#c92a33",
+   "grosor": 0.3,
+   "tengo": false,
+   "nota": "barata y fiable para plotter"
+  }
+ ]
 }
