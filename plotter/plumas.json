@@ -1,0 +1,24 @@
+{
+  "_nota": "Catálogo de TUS plumas. Edita/añade las que tengas. 'color' es un hex aproximado del trazo sobre papel blanco: para más fidelidad, haz una muestra en papel, fotografíala con luz neutra y pon aquí el color medido. 'grosor' en mm.",
+  "papel": "#ffffff",
+  "plumas": [
+    {"nombre": "Micron negro", "color": "#1a1a1a", "grosor": 0.3},
+    {"nombre": "Micron sepia", "color": "#5b4033", "grosor": 0.3},
+    {"nombre": "Micron marron", "color": "#7a4a2a", "grosor": 0.3},
+    {"nombre": "Micron rojo", "color": "#c8102e", "grosor": 0.3},
+    {"nombre": "Micron rosa", "color": "#e8618c", "grosor": 0.3},
+    {"nombre": "Micron naranja", "color": "#f07f1e", "grosor": 0.3},
+    {"nombre": "Micron amarillo", "color": "#f2c200", "grosor": 0.3},
+    {"nombre": "Micron verde", "color": "#1f7a3a", "grosor": 0.3},
+    {"nombre": "Micron verde claro", "color": "#7cbf3f", "grosor": 0.3},
+    {"nombre": "Micron azul", "color": "#1f4fa3", "grosor": 0.3},
+    {"nombre": "Micron azul real", "color": "#2b6cd6", "grosor": 0.3},
+    {"nombre": "Micron azul claro", "color": "#36a9e1", "grosor": 0.3},
+    {"nombre": "Micron morado", "color": "#5b2c83", "grosor": 0.3},
+    {"nombre": "Micron burdeos", "color": "#7b1e34", "grosor": 0.3},
+    {"nombre": "Micron gris frio", "color": "#8a9199", "grosor": 0.3},
+    {"nombre": "Staedtler ocre", "color": "#c8902f", "grosor": 0.3},
+    {"nombre": "Staedtler cian", "color": "#00a0d6", "grosor": 0.3},
+    {"nombre": "Staedtler magenta", "color": "#d1006f", "grosor": 0.3}
+  ]
+}

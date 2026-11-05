@@ -45,7 +45,8 @@ def main():
     total = np.zeros((gh, gw), np.uint16)
     per_layer = {}
     for lid, pen in zip(lids, pens):
-        t = max(1, int(round(pen * r)))
+        t = max(1, int(round(pen * r)))                      # diámetro de la pluma en px
+        disk = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (t, t))
         lay = np.zeros((gh, gw), np.uint16)
         for line in doc.layers[lid]:
             pts = np.c_[line.real, line.imag] * PX2MM * r
@@ -56,7 +57,9 @@ def main():
             if x1 <= x0 or y1 <= y0:
                 continue
             m = np.zeros((y1 - y0 + 1, x1 - x0 + 1), np.uint8)
-            cv2.polylines(m, [np.round(pts - [x0, y0]).astype(np.int32)], False, 1, t, cv2.LINE_8)
+            cv2.polylines(m, [np.round(pts - [x0, y0]).astype(np.int32)], False, 1, 1, cv2.LINE_8)
+            if t > 1:                                         # ancho exacto = diámetro de la pluma
+                m = cv2.dilate(m, disk)
             lay[y0:y1 + 1, x0:x1 + 1] += m
         per_layer[lid] = lay
         total += lay

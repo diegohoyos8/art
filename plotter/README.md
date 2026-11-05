@@ -29,6 +29,7 @@ Recetas paso a paso para pasar de una idea a un dibujo físico con un **Bantam T
 | 5 | Flow fields / trazos orgánicos | lienzo de florianmarkus | `estilos/flowfield.py` | [04](docs/04-flow-fields.md) |
 | 6 | Patrones de líneas paralelas (truchet) | pluma gruesa de Václav | `estilos/truchet.py` | [05](docs/05-patrones-truchet.md) |
 | 7 | Multicolor / circuitos | Lostpixels | `estilos/circuito.py` | [06](docs/06-multicolor-circuitos.md) |
+| 9 | **Imagen a varios colores** (elige tus plumas automáticamente) | cualquier imagen | `estilos/colores.py` + `plumas.json` | [08](docs/08-color-desde-imagen.md) |
 | 8 | Planos técnicos / blueprint (pluma blanca en papel oscuro) | A380 de Orowan Studio | SVG/DXF existente + `preparar.sh` | [07](docs/07-blueprint-svg-existente.md) |
 
 Antes de nada lee la **[Guía completa](GUIA-COMPLETA.md)** (cómo funciona la máquina, iPad vs PC, software, plumas) y **[00 — Equipo, materiales y flujo](docs/00-equipo-y-flujo.md)**.

@@ -122,7 +122,8 @@ Ordenador: Inkscape abre el SVG ─► Extensiones → NextDraw ─► Plot (cap
 |---|---|
 | `plotter/README.md` | Índice de estilos y flujo |
 | `plotter/docs/00…07` | Guía de cada estilo |
-| `plotter/estilos/*.py` | Generadores: mapa, mapa Madrid (callejero), line art, retrato de flujo, flow field, truchet, circuito |
+| `plotter/plumas.json` | Catálogo de tus plumas (color y grosor) para el estilo multicolor |
+| `plotter/estilos/*.py` | Generadores: colores (imagen multicolor), mapa, mapa Madrid (callejero), line art, retrato de flujo, flow field, truchet, circuito |
 | `plotter/preparar.sh` | Optimiza cualquier SVG para el NextDraw y bloquea si hay exceso de tinta |
 | `plotter/estilos/densidad.py` | Simula la tinta con el grosor real de cada pluma |
 | `tools/` | DrawingBotV3 sin interfaz (imagen → trazos tonales) |
