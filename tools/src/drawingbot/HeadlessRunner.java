@@ -63,6 +63,7 @@ public class HeadlessRunner {
         File outDir = new File(args[1]).getAbsoluteFile();
         String pfmName = args.length > 2 ? args[2] : "Sketch Lines PFM";
         String formats = args.length > 3 ? args[3] : "svg,gcode";
+        String settings = args.length > 4 ? args[4] : "";   // "Line Density=40;Plotting Resolution=0.5"
         outDir.mkdirs();
         String base = image.getName().replaceFirst("\\.[^.]+$", "");
 
@@ -89,6 +90,23 @@ public class HeadlessRunner {
             if (!ok) System.out.println("[runner] Image not loaded yet, retrying (" + attempt + ")...");
         }
         if (!ok) { System.err.println("[runner] Could not load image"); System.exit(3); }
+        if (!settings.isBlank()) {
+            runFx(() -> {
+                for (String kv : settings.split(";")) {
+                    String[] p = kv.split("=", 2);
+                    if (p.length != 2) continue;
+                    boolean found = false;
+                    for (var st : DrawingBotV3.project().getPFMSettings().getSettings()) {
+                        if (st.getKey().equalsIgnoreCase(p[0].trim())) {
+                            st.setValueFromString(p[1].trim());
+                            System.out.println("[runner] " + st.getKey() + " = " + st.getValueAsString());
+                            found = true;
+                        }
+                    }
+                    if (!found) System.out.println("[runner] Setting not found: " + p[0]);
+                }
+            });
+        }
         System.out.println("[runner] Image loaded, plotting with " + pfmName + "...");
 
         runFx(() -> DrawingBotV3.INSTANCE.startPlotting(DrawingBotV3.context()));
