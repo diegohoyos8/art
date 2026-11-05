@@ -18,10 +18,11 @@ def paper(name: str, landscape: bool = False):
     return (h, w) if landscape else (w, h)
 
 
-def write_svg(path, layers, size_mm, colors=None, stroke_mm=0.3):
+def write_svg(path, layers, size_mm, colors=None, stroke_mm=0.3, widths=None):
     """layers: dict nombre -> lista de polilíneas (arrays Nx2 en mm)."""
     w, h = size_mm
     colors = colors or {}
+    widths = widths or {}
     default = ["#111111", "#d62828", "#1d70b8", "#2a9d8f", "#e9a400", "#7b2cbf"]
     out = [f'<svg xmlns="http://www.w3.org/2000/svg" '
            f'xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" '
@@ -29,7 +30,7 @@ def write_svg(path, layers, size_mm, colors=None, stroke_mm=0.3):
     for i, (name, lines) in enumerate(layers.items()):
         col = colors.get(name, default[i % len(default)])
         out.append(f'<g inkscape:groupmode="layer" inkscape:label="{i+1}-{name}" id="layer{i+1}" '
-                   f'fill="none" stroke="{col}" stroke-width="{stroke_mm}" stroke-linecap="round" stroke-linejoin="round">')
+                   f'fill="none" stroke="{col}" stroke-width="{widths.get(name, stroke_mm)}" stroke-linecap="round" stroke-linejoin="round">')
         for pl in lines:
             pl = np.asarray(pl)
             if len(pl) < 2:

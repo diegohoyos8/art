@@ -37,7 +37,7 @@ def lines_of(geom):
 def main():
     ap = argparse.ArgumentParser()
     g = ap.add_mutually_exclusive_group(required=True)
-    g.add_argument("--lugar"); g.add_argument("--punto"); g.add_argument("--osm")
+    g.add_argument("--lugar"); g.add_argument("--punto"); g.add_argument("--osm"); g.add_argument("--pbf", help="extracto .osm.pbf (p.ej. de download.geofabrik.de), sin internet")
     ap.add_argument("--radio", type=float, default=2000, help="metros")
     ap.add_argument("--papel", default="A3"); ap.add_argument("--horizontal", action="store_true")
     ap.add_argument("--circulo", action="store_true", help="recorte circular")
@@ -46,6 +46,8 @@ def main():
     a = ap.parse_args()
 
     import osmnx as ox
+    if a.pbf:
+        return from_pbf(a)
     if a.osm:
         G = ox.graph_from_xml(a.osm, simplify=True, retain_all=True)
     else:
@@ -78,7 +80,38 @@ def main():
     layers = {k: v for k, v in layers.items() if v}
     layers = plotlib.fit(layers, (w, h), margin_mm=20, flip_y=True)  # Y de mapas crece hacia arriba
     plotlib.write_svg(a.salida, layers, (w, h),
-                      colors={"principales": "#111", "secundarias": "#333", "pequenas": "#777", "agua": "#1d70b8", "marco": "#111"})
+                      colors={"principales": "#111", "secundarias": "#333", "pequenas": "#777", "agua": "#1d70b8", "marco": "#111"},
+                      widths={"principales": 0.8, "secundarias": 0.5, "pequenas": 0.25, "agua": 0.4, "marco": 1.0})
+
+
+def from_pbf(a):
+    import pyrosm
+    osm = pyrosm.OSM(a.pbf)
+    edges = osm.get_network(network_type="all")
+    crs = edges.estimate_utm_crs()
+    edges = edges.to_crs(crs)
+    cx, cy = edges.union_all().centroid.coords[0]
+    w, h = plotlib.paper(a.papel, a.horizontal)
+    r = a.radio
+    clip = Point(cx, cy).buffer(r) if a.circulo else box(cx - r * w / max(w, h), cy - r * h / max(w, h), cx + r * w / max(w, h), cy + r * h / max(w, h))
+    layers = {"principales": [], "secundarias": [], "pequenas": [], "agua": []}
+    for hw, geom in zip(edges["highway"], edges.geometry):
+        layers[classify(hw)] += lines_of(geom.intersection(clip))
+    if not a.sin_agua:
+        try:
+            nat = osm.get_natural()
+            if nat is not None:
+                nat = nat.to_crs(crs)
+                for geom in nat[nat["natural"].isin(["water", "coastline"])].geometry:
+                    layers["agua"] += lines_of(geom.intersection(clip))
+        except Exception as e:
+            print("Sin capa de agua:", e)
+    layers["marco"] = lines_of(clip.boundary)
+    layers = {k: v for k, v in layers.items() if v}
+    layers = plotlib.fit(layers, (w, h), margin_mm=20, flip_y=True)
+    plotlib.write_svg(a.salida, layers, (w, h),
+                      colors={"principales": "#111", "secundarias": "#333", "pequenas": "#777", "agua": "#1d70b8", "marco": "#111"},
+                      widths={"principales": 0.8, "secundarias": 0.5, "pequenas": 0.25, "agua": 0.4, "marco": 1.0})
 
 
 if __name__ == "__main__":

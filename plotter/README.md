@@ -3,8 +3,8 @@
 Recetas paso a paso para pasar de una idea a un dibujo físico con un **Bantam Tools NextDraw**
 (8511 / 1117 / 2234). Todo el flujo trabaja en **SVG**, que es lo que usa el NextDraw (no G-code).
 
-![muestras](ejemplos/muestras.png)
-*Line art · retrato de flujo · flow field · truchet · circuito multicolor (generados con estos scripts)*
+![galería](ejemplos/galeria_estilos.png)
+*Un ejemplo de cada estilo, generado con estos scripts*
 
 ## El flujo universal (todos los proyectos)
 

@@ -11,7 +11,7 @@ Calles, ríos y costa desde OpenStreetMap, separados por importancia en capas (=
    python mapa.py --lugar "Madrid, Spain" --radio 2500 --papel A3 -o madrid.svg
    python mapa.py --punto 40.4168,-3.7038 --radio 1500 --circulo -o sol.svg     # recorte circular
    ```
-   Si tienes un archivo `.osm` (exportado desde openstreetmap.org → Exportar): `python mapa.py --osm zona.osm -o zona.svg`
+   Sin internet: archivo `.osm` (openstreetmap.org → Exportar) con `--osm zona.osm`, o una región entera `.osm.pbf` de download.geofabrik.de con `--pbf region.osm.pbf --radio 2000`
 3. **Capas que salen**:
    | Capa | Contenido | Pluma sugerida |
    |---|---|---|
