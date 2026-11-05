@@ -12,7 +12,7 @@ Recetas paso a paso para pasar de una idea a un dibujo físico con un **Bantam T
 1. IDEA        → elegir estilo (tabla abajo) + papel + plumas
 2. FUENTE      → imagen / datos de mapa / parámetros generativos
 3. GENERAR     → script del estilo  → archivo.svg
-4. PREPARAR    → ./preparar.sh archivo.svg a3   (escala, une y ordena trazos, capas por pluma)
+4. PREPARAR    → ./preparar.sh archivo.svg a3 0.5   (papel + grosor de pluma: escala, optimiza y CONTROLA LA TINTA)
 5. REVISAR     → abrir *_plot.svg (Inkscape / NextDraw app), ver tiempo estimado y metros de tinta
 6. PLOTEAR     → prueba pequeña en papel barato → plot final, una capa (= pluma) cada vez
 7. ARCHIVAR    → guardar SVG + parámetros + semilla + foto del resultado en proyectos/

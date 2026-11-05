@@ -19,17 +19,32 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("-o", "--salida", default="circuito.svg")
     ap.add_argument("--papel", default="A3"); ap.add_argument("--horizontal", action="store_true")
-    ap.add_argument("--pistas", type=int, default=50, help="número de haces")
+    ap.add_argument("--pistas", type=int, default=3000, help="intentos de haz (se colocan los que caben sin chocar)")
     ap.add_argument("--colores", type=int, default=4)
-    ap.add_argument("--paso", type=float, default=1.6, help="separación entre pistas de un haz (mm)")
+    ap.add_argument("--pluma", type=float, default=0.4, help="grosor de la pluma en mm")
+    ap.add_argument("--paso", type=float, help="separación entre pistas de un haz (mm, defecto 4x pluma)")
     ap.add_argument("--semilla", type=int, default=1)
     a = ap.parse_args()
+    a.paso = a.paso or 4 * a.pluma
+    sep = a.paso                         # distancia mínima entre pistas de haces distintos
+    cell = sep / 2
     rng = np.random.default_rng(a.semilla)
     W, H = plotlib.paper(a.papel, a.horizontal)
     m, g = 15, 4.0  # margen, rejilla (mm)
     names = ["negro", "rojo", "azul", "verde", "ocre", "violeta"][:a.colores]
     layers = {n: [] for n in names}
     occ = set()
+    W_, H_ = plotlib.paper(a.papel, a.horizontal)
+    ink = np.zeros((int(H_ / cell) + 2, int(W_ / cell) + 2), bool)
+
+    def samples(pl):
+        out = []
+        for p0, p1 in zip(pl[:-1], pl[1:]):
+            n = max(1, int(np.linalg.norm(p1 - p0) / (cell / 2)))
+            out += [p0 + (p1 - p0) * t for t in np.linspace(0, 1, n, endpoint=False)]
+        out.append(pl[-1])
+        return np.array(out)
+
     for _ in range(a.pistas):
         col = names[rng.integers(len(names))]
         k = int(rng.integers(1, 7))                   # pistas en el haz
@@ -52,6 +67,24 @@ def main():
         if len(path) < 2:
             continue
         path = np.array(path)
+        # recorta el haz donde chocaría con tinta de otros haces (evita acumular tinta)
+        width = (k - 1) * a.paso / 2 + sep
+        ok_n = 1
+        for n in range(2, len(path) + 1):
+            seg_pts = samples(path[n - 2:n])
+            r = int(np.ceil(width / cell))
+            hit = False
+            for x, y in seg_pts:
+                cx, cy = int(x / cell), int(y / cell)
+                if ink[max(cy - r, 0):cy + r + 1, max(cx - r, 0):cx + r + 1].any():
+                    hit = True; break
+            if hit:
+                break
+            ok_n = n
+        path = path[:ok_n]
+        if len(path) < 2:
+            continue
+        tracks = []
         for i in range(k):                            # desplaza cada pista del haz
             off = (i - (k - 1) / 2) * a.paso
             seg = np.diff(path, axis=0); nrm = np.c_[-seg[:, 1], seg[:, 0]]
@@ -59,13 +92,16 @@ def main():
             nv = np.vstack([nrm[0], (nrm[:-1] + nrm[1:]) / 2, nrm[-1]])
             nv /= np.linalg.norm(nv, axis=1, keepdims=True) + 1e-9
             pl = path + nv * off
-            layers[col].append(pl)
+            layers[col].append(pl); tracks.append(pl)
             for end in (pl[0], pl[-1]):                # pads en los extremos
                 if rng.random() < 0.6:
                     layers[col].append(circle(*end, 0.6))
+        for pl in tracks:                              # marca la tinta de este haz
+            for x, y in samples(pl):
+                ink[min(int(y / cell), ink.shape[0] - 1), min(int(x / cell), ink.shape[1] - 1)] = True
         if rng.random() < 0.3:                         # chip / vía grande
             layers["negro"].append(circle(*path[-1], rng.uniform(1.5, 3.5)))
-    plotlib.write_svg(a.salida, layers, (W, H), stroke_mm=0.4,
+    plotlib.write_svg(a.salida, layers, (W, H), stroke_mm=a.pluma,
                       colors={"negro": "#111", "rojo": "#d62828", "azul": "#1d70b8", "verde": "#2a9d8f", "ocre": "#e9a400", "violeta": "#7b2cbf"})
 
 

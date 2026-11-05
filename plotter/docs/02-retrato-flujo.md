@@ -21,5 +21,5 @@ zonas oscuras = trazos largos y juntos, zonas claras = cortos y separados.
    | `--umbral 0.2` | por debajo de esta oscuridad no se dibuja (fondo limpio) |
    | `--gamma 0.8` | <1 oscurece la imagen, >1 la aclara |
    | `--semilla N` | otra variación con los mismos parámetros |
-4. **Prepara**: `plotter/preparar.sh cara.svg a3` y prueba en A5 primero.
+4. **Prepara**: `plotter/preparar.sh cara.svg a3 0.4` y prueba en A5 primero (con pluma más fina).
 5. **Pluma**: fineliner 0.3–0.5 negro. Velocidad media: son miles de trazos cortos, cada uno sube y baja la pluma.

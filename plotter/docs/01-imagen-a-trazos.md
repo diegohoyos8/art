@@ -26,7 +26,7 @@ Hay dos maneras de convertir una imagen para el plotter. Elige según la imagen:
    - *Sketch Lines*: el más fiel. Genera varias capas de gris (una pluma por tono, o todas en negro).
    - *Spiral*: una sola línea continua: rapidísimo de plotear y muy gráfico.
    - *Sketch Squares*: textura geométrica.
-4. **Prepara y plotea**: `plotter/preparar.sh output/obra_lines/obra.svg a3`
+4. **Prepara y plotea**: `plotter/preparar.sh output/obra_lines/obra.svg a3 0.3`
 5. Para controlar todos los parámetros (densidad, largo de línea, plumas) abre DrawingBotV3 con interfaz en tu ordenador:
    descarga la versión Free desde su GitHub, carga la imagen, ajusta y exporta SVG.
 

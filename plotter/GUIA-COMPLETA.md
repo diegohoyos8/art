@@ -87,7 +87,7 @@ Ordenador: Inkscape abre el SVG ─► Extensiones → NextDraw ─► Plot (cap
 1. **Idea y estilo** → elige uno de los 8 estilos (`plotter/README.md`).
 2. **Fuente** → imagen, lugar del mapa o parámetros.
 3. **Generar SVG** → script del estilo (o pídemelo a mí).
-4. **Preparar** → `preparar.sh obra.svg a3`: escala, optimiza recorridos y te dice los metros de tinta.
+4. **Preparar** → `preparar.sh obra.svg a3 0.5`: escala, optimiza recorridos, te dice los metros de tinta y **comprueba que la tinta no empape el papel con esa pluma** (si no pasa, no se plotea).
 5. **Revisar** en Inkscape: tamaño, márgenes, capas `1-…`, `2-…`.
 6. **Configurar la máquina**: altura de la pluma (que toque el papel sin presionar), velocidad (empieza lento).
 7. **Prueba** en A5/A6 papel barato. Ajusta.
@@ -107,7 +107,7 @@ Ordenador: Inkscape abre el SVG ─► Extensiones → NextDraw ─► Plot (cap
 
 1. **Papel que se mueve** → fíjalo en las 4 esquinas, y más si plotea horas.
 2. **Pluma demasiado baja** → arrastra o rompe el papel. Debe apenas tocar.
-3. **Demasiada densidad** → la tinta empapa el papel. Separación de líneas ≥ grosor de la pluma.
+3. **Demasiada densidad** → la tinta empapa el papel. **Esto lo controla `preparar.sh` automáticamente** según el lienzo y la pluma.
 4. **Diseñar en A4 y ampliar a A1** → diseña al tamaño final.
 5. **Pluma que se seca** en plots largos → ten repuesto; mira los metros que da `preparar.sh`.
 6. **Texto con fuentes normales** → sale hueco. Usa Hershey.
@@ -123,6 +123,7 @@ Ordenador: Inkscape abre el SVG ─► Extensiones → NextDraw ─► Plot (cap
 | `plotter/README.md` | Índice de estilos y flujo |
 | `plotter/docs/00…07` | Guía de cada estilo |
 | `plotter/estilos/*.py` | Generadores: mapa, mapa Madrid (callejero), line art, retrato de flujo, flow field, truchet, circuito |
-| `plotter/preparar.sh` | Optimiza cualquier SVG para el NextDraw |
+| `plotter/preparar.sh` | Optimiza cualquier SVG para el NextDraw y bloquea si hay exceso de tinta |
+| `plotter/estilos/densidad.py` | Simula la tinta con el grosor real de cada pluma |
 | `tools/` | DrawingBotV3 sin interfaz (imagen → trazos tonales) |
 | `plotter/ejemplos/` | Galería de muestra y el mapa de Madrid A3 listo |

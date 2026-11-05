@@ -21,7 +21,7 @@ Calles, ríos y costa desde OpenStreetMap, separados por importancia en capas (=
    | `3-pequenas` | calles residenciales, caminos | 0.2–0.3 |
    | `4-agua` | ríos, lagos, costa | azul |
    | `marco` | borde del recorte | la más gruesa |
-4. **Prepara**: `plotter/preparar.sh madrid.svg a3 20mm`
+4. **Prepara**: `plotter/preparar.sh madrid.svg a3 0.8,0.5,0.3,0.4,0.8 20mm` (una pluma por capa, en orden)
 5. **Texto** (nombre de la ciudad, coordenadas): añádelo en Inkscape con *Hershey Text* en una capa nueva.
 
 ## Dónde descargar mapas con más detalle
@@ -54,7 +54,7 @@ Calles, ríos y costa desde OpenStreetMap, separados por importancia en capas (=
    # otro centro / zoom:  --centro 40.4153,-3.6845 --radio 1500   (Retiro, más cerca)
    # sin título:          --titulo ""
    ```
-3. `plotter/preparar.sh madrid.svg a3 10mm`
+3. `plotter/preparar.sh madrid.svg a3 0.7,0.3,0.2,0.8,0.5 10mm`
 
 Capas: `1-principales` (avenidas, paseos, autovías → pluma 0.7–0.8), `2-calles` (0.3), `3-pequenas` (0.1–0.2),
 `4-marco`, `5` = título MADRID + coordenadas en fuente Hershey (un solo trazo).

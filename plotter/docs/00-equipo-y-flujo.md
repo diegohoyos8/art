@@ -34,12 +34,14 @@ Mi recomendación: **1117**. Te deja hacer A4 y A3, y el salto de A4 a A3 cambia
 3. **Generar** el SVG con el script del estilo (usa `--papel A3` etc.).
 4. **Preparar para el plotter**:
    ```bash
-   plotter/preparar.sh obra.svg a3 15mm      # → obra_plot.svg
+   plotter/preparar.sh obra.svg a3 0.5 15mm      # papel, grosor de pluma, margen → obra_plot.svg
    ```
-   Te dice los **metros con tinta** y **en el aire**. Más metros = más tiempo y más desgaste de pluma.
+   Te dice los **metros con tinta** y **en el aire**, y **simula la tinta con el grosor real de la pluma**:
+   si hay zonas que empaparían el papel, se para y genera `obra_plot_densidad.png` con las zonas en rojo.
+   ⚠️ Si cambias el papel o la pluma, vuelve a preparar: la misma obra en A6 tiene las líneas 3× más juntas que en A3. Más metros = más tiempo y más desgaste de pluma.
    Regla práctica: si una pluma fina debe hacer > 150 m, ten una de repuesto.
 5. **Revisar** `obra_plot.svg` en Inkscape: capas `1-…`, `2-…` = una pluma cada una.
-6. **Prueba**: plotea una versión A5/A6 (`preparar.sh obra.svg a6`) en papel barato, ajusta altura de pluma y velocidad
+6. **Prueba**: plotea una versión A5/A6 con una pluma más fina (`preparar.sh obra.svg a6 0.1`) en papel barato, ajusta altura de pluma y velocidad
    (más lento = línea más uniforme con plumas de gel/estilográficas).
 7. **Plot final**: plotea capa por capa (en la app de NextDraw, modo *layers*), cambiando la pluma entre capas
    sin mover el papel. Empieza por los colores claros y termina con el negro.

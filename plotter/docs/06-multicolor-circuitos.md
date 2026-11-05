@@ -5,8 +5,8 @@ Cada color es una **capa** del SVG y se plotea con una pluma distinta.
 
 ```bash
 cd plotter/estilos
-python circuito.py -o circuito.svg --papel A3 --pistas 80 --colores 4 --semilla 5
-plotter/preparar.sh circuito.svg a3
+python circuito.py -o circuito.svg --papel A3 --pluma 0.4 --colores 4 --semilla 5
+plotter/preparar.sh circuito.svg a3 0.4
 ```
 
 ## Cómo plotear varios colores
@@ -19,8 +19,9 @@ plotter/preparar.sh circuito.svg a3
 
 | Parámetro | Efecto |
 |---|---|
-| `--pistas` | número de haces |
+| `--pluma 0.4` | grosor de pluma: separación entre pistas = 4× y los haces no se pisan |
+| `--pistas` | intentos de haz (solo se colocan los que caben sin chocar) |
 | `--colores` | número de plumas (hasta 6) |
-| `--paso 1.6` | separación entre pistas de un haz (mm) |
+| `--paso` | separación entre pistas de un haz (mm, por defecto 4× pluma) |
 
 Plumas: estilográfica o gel de colores (Uni-ball Signo, Sakura Gelly Roll) dan esos colores vivos.
