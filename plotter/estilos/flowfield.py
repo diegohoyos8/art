@@ -23,6 +23,7 @@ def main():
     ap.add_argument("--direccion", type=float, default=-60, help="ángulo dominante en grados")
     ap.add_argument("--caos", type=float, default=1.2, help="cuánto se desvía del ángulo dominante (radianes)")
     ap.add_argument("--imagen", help="usar imagen como mapa de densidad")
+    ap.add_argument("--umbral", type=float, default=0.15, help="con --imagen: las curvas no entran donde la oscuridad es menor")
     ap.add_argument("--semilla", type=int, default=1)
     ap.add_argument("--margen", type=float, default=15)
     a = ap.parse_args()
@@ -39,7 +40,9 @@ def main():
     if a.imagen:
         import cv2
         im = cv2.imread(a.imagen, cv2.IMREAD_GRAYSCALE)
-        dens = 1 - cv2.resize(im, (gw, gh)).astype(float) / 255
+        dens = 1 - cv2.GaussianBlur(cv2.resize(im, (gw, gh)).astype(float) / 255, (0, 0), 2)
+        lo, hi = np.percentile(dens, [5, 98])              # estira el contraste a 0..1
+        dens = np.clip((dens - lo) / (hi - lo + 1e-9), 0, 1)
 
     # rejilla de ocupación: celda = sep_min/2; guarda la separación exigida en ese punto
     cell = sep_min / 2
@@ -50,7 +53,7 @@ def main():
         if dens is None:
             return sep_min
         d = dens[min(int(y * res), gh - 1), min(int(x * res), gw - 1)]
-        return sep_min * (1 + 3 * (1 - d))          # claro -> hasta 4x más separado
+        return sep_min * (1 + 5 * (1 - d) ** 1.5)   # claro -> hasta 6x más separado
 
     def free(x, y, sep, own):
         cx, cy = int(x / cell), int(y / cell)
@@ -81,6 +84,8 @@ def main():
             nx, ny = x + np.cos(t) * step, y + np.sin(t) * step
             if not (m <= nx <= W - m and m <= ny <= H - m) or not free(nx, ny, sep_at(nx, ny), own):
                 break
+            if dens is not None and dens[min(int(ny * res), gh - 1), min(int(nx * res), gw - 1)] < a.umbral:
+                break                                    # no invade zonas claras: mantiene la forma
             x, y = nx, ny
             pts.append((x, y)); own.add((int(y / cell), int(x / cell)))
         if len(pts) > 6:
